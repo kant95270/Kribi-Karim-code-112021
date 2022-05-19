@@ -1,9 +1,10 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get("id")
-    if (id != null) {
-    let itemPrice = 0
-    let imgUrl , altText, articleName
+let itemPrice = 0
+let imgUrl , altText, articleName
+if (id == null) {
+    window.location.href = 'index.html';
 }
 
 fetch(`http://localhost:3000/api/products/${id}`)
@@ -12,6 +13,9 @@ fetch(`http://localhost:3000/api/products/${id}`)
 
 function handleData( kanap ) { // gérer les données
     const { altTxt, colors, description, imageUrl , name, price, _id }= kanap
+    if (_id == null) {
+        window.location.href = 'index.html';
+    }
     itemPrice = price
     imgUrl =imageUrl
     altText= altTxt

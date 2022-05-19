@@ -103,11 +103,11 @@ function addQuantityToSettings(settings , item) { // ajouter la quantité au par
 }
 
 function updatePriceAndQuantity(id , newValue , item) { // mettre à jours le prix et quantité
-    const itemToUpdate = cart.find ((item) =>  item.id === id)
+    const itemToUpdate = cart.find ((currentItem) =>  currentItem.id === id && currentItem.color === item.color)
     itemToUpdate.quantity = Number(newValue)
     item.quantity = itemToUpdate.quantity
-    displayTotalQuantity(item)
-    displayTotalPrice(item)
+    displayTotalQuantity()
+    displayTotalPrice()
     saveNewDataToCache(item)
 }
 
